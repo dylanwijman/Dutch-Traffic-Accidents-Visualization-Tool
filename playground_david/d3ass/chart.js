@@ -31,7 +31,9 @@ function runVis(year_global){
     for( var i = 0; i < elmt.length; i++ ){
         sum += parseInt( elmt[i], 10 ); //don't forget to add the base
     }
-    return parseInt(sum/elmt.length);
+    var avg = sum/elmt.length /10
+    avg = Math.round( avg * 10 ) / 10
+    return avg;//parseInt(sum/elmt.length /10);
   }
 
   //create a dictionary for every year
@@ -73,7 +75,7 @@ function runVis(year_global){
      //.attr("y", function(d) {return h - padding  - d * scaling ; }) //Height minus data value
      .attr("width", (w -padding) / dataset.length - barPadding)
      .attr("height", function(d) {return h- padding - yScale(d)  ; })//Just the data value
-     .attr("fill", function(d) { return "rgb(" + ( d * 2 - 50) +",0," + (350 - d*2) + ")";});
+     .attr("fill", function(d) { return "rgb(" + ( d * 20 - 50) +",0," + (300 - d*20) + ")";});
 
 
   // svg.append("g")
@@ -138,14 +140,14 @@ $(document).keydown(function(e){
     if (e.keyCode == 39 || e.keyCode == 38) { 
     year_global = year_global +1
     document.getElementById('showsyear').innerHTML = "Average Temperatures " 
-                                                    + year_global +" in fahrenheit." ;
+                                                    + year_global +" in Celcius." ;
     d3.select("svg").remove();
     runVis(year_global)
     }
     else if(e.keyCode == 37 || e.keyCode == 40){
     year_global = year_global -1
     document.getElementById('showsyear').innerHTML = "Average Temperatures " 
-                                              + year_global +" in fahrenheit." ;
+                                              + year_global +" in Celcius." ;
     d3.select("svg").remove();
     runVis(year_global)
     }
