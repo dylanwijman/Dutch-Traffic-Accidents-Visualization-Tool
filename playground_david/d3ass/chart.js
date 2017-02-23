@@ -2,7 +2,7 @@
 Author: David Zomerdijk
 Description: using d3 to visualize a chart
 */
-
+var year_global = 2015
 
 
 function runVis(year_global){
@@ -129,8 +129,30 @@ function runVis(year_global){
   }) 
 }
 
-document.getElementById("chart").addEventListener("load", runVis(2015));
 
+document.getElementById("chart").addEventListener("load", runVis(year_global));
+
+
+
+$(document).keydown(function(e){
+    if (e.keyCode == 39 || e.keyCode == 38) { 
+    year_global = year_global +1
+    document.getElementById('showsyear').innerHTML = "Average Temperatures " 
+                                                    + year_global +" in fahrenheit." ;
+    d3.select("svg").remove();
+    runVis(year_global)
+    }
+    else if(e.keyCode == 37 || e.keyCode == 40){
+    year_global = year_global -1
+    document.getElementById('showsyear').innerHTML = "Average Temperatures " 
+                                              + year_global +" in fahrenheit." ;
+    d3.select("svg").remove();
+    runVis(year_global)
+    }
+
+
+
+});
 
 
 
