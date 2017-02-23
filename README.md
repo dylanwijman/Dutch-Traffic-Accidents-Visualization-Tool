@@ -7,6 +7,6 @@
 
 -[leaflet](http://leafletjs.com/examples/quick-start)
 
--[datamaps](https://datamaps.github.io) en meer [specifieke datamaps](http://rmaps.github.io/blog/posts/animated-choropleths/ )
+-[datamaps](https://datamaps.github.io) and more [specific datamaps](http://rmaps.github.io/blog/posts/animated-choropleths/ )
 
 
