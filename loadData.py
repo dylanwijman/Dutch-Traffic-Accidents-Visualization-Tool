@@ -1,4 +1,12 @@
+"""
+author: David Zomerdijk
+Description: loads pickledata and makes importing data possible
+"""
+
 from flask import Flask
+import pickle
+import pandas as pd
+
 app = Flask(__name__)
 
 @app.route("/")

@@ -14,6 +14,8 @@
 
 -[Data on Dutch Accidents](http://www.rijkswaterstaat.nl/apps/geoservices/geodata/dmc/bron/)
 
+-[The Pickled pandas dataframe is available here](https://drive.google.com/drive/folders/0B2oWyWsxUFXJT1BacnJLRm9XTE0?usp=sharing)
+
 **Dependencies:**
 
     -python 3
