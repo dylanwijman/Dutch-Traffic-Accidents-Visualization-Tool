@@ -13,5 +13,8 @@ app = Flask(__name__)
 def hello():
     return "Hello World!"
 
+
+
 if __name__ == "__main__":
+    #data = pickle.load(open("Data/verkeersOngelukkenNederland.p", "rb"))
     app.run()
