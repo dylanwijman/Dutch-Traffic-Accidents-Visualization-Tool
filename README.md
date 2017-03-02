@@ -28,12 +28,21 @@
 Furthermore one needs to put the pickled data in the **Data** directory.
     
 **Feedback session 1**
+
 -Decide what to show in the filter section
+
 -Are we going to show a map that shows other visualizations?
+
 -Do we want to make predictions to actually use the information we have?
+
 -We have some basics next week with a zoom component
+
 -The URL is a view, which responds to a function in Flask 
+
 -Angular
+
 -Ajax request jQuery
+
 -Make sure we get a json response from Flask - google Flask json response
+
 -Try to make a basic skeleton to start with for next week
