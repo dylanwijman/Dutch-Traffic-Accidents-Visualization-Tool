@@ -32,7 +32,7 @@ def data(year= 2015 ):
     # return  result.head(3).reset_index().to_json(orient='index')
 
     result = data[ (data["JAAR_VKL"] == year)]
-    output = result["PVE_CODE"].value_counts().to_json(orient="columns")
+    output = result["PVE_NAAM"].value_counts().to_json(orient="columns")
 
     return output
 
