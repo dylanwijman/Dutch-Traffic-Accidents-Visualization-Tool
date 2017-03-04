@@ -9,6 +9,10 @@
 
 -[datamaps](https://datamaps.github.io) and more [specific datamaps](http://rmaps.github.io/blog/posts/animated-choropleths/ )
 
+-[hello world d3 flask](https://github.com/dfm/flask-d3-hello-world/blob/master/app.py)
+
+-[d3 with filters](https://jeromegagnonvoyer.wordpress.com/2013/04/17/creating-a-data-visualization-tool-using-d3-js-crossfilter-and-leaflet-js/)
+
 
 **Data**
 

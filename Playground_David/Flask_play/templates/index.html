@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>Dutch traffic accidents visualization tool</title>
+
+    <script src="http://d3js.org/d3.v2.js"></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+
+
+
+
+</head>
+<body>
+
+    <h1>Dutch traffic accidents visualization tool.</h1>
+    <input type="range" min="2003" max="2015" id="slider">
+
+    <div id="selectedYear">
+
+    </div>
+
+    <div id="info">
+
+    </div>
+
+    <div id="plot">
+    </div>
+
+    <script>
+            d3.select("#slider").on("input", function() {
+          update(+this.value);
+        });
+
+
+        // Show the information about a particular point.
+        var show_info = function (d) {
+            d3.select("#info").text( d );
+        };
+
+        var callback = function (data) {
+            d3.select("#info").text( JSON.stringify(data, null, 2) );
+        }
+
+        // Load the data.
+       function update(year) {
+            d3.select("#selectedYear").text( year );
+            var data = d3.json("/data/" + String(year), callback)
+        };
+
+        update(2015);
+
+        <!--d3.json("/data", loadData);-->
+    </script>
+
+</body>
+</html>

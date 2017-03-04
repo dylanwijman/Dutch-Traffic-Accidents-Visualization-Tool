@@ -32,7 +32,6 @@ def event_stream():
 def show_basic():
     x = random.randint(0, 101)
     y = random.randint(0, 101)
-    print
     json.dumps(d)
     return render_template("redisd3.html", data=json.dumps(d))
 
