@@ -1,6 +1,6 @@
 """
 Remark: Some code has been copy pasted from tutorials.
-https://github.com/dfm/flask-d3-hello-world/blob/master/app.py test
+https://github.com/dfm/flask-d3-hello-world/blob/master/app.py tesst
 """
 """
 This file is part of the flask+d3 Hello World project.
