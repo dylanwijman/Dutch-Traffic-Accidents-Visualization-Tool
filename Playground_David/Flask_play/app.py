@@ -40,6 +40,7 @@ def data(year= 2015 ):
 
 
 if __name__ == "__main__":
+    #open data
     data = pickle.load(open( PATH_TO_DATA, "rb" ) )
 
     port = 8000
