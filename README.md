@@ -50,3 +50,16 @@ Furthermore one needs to put the pickled data in the **Data** directory.
 -Make sure we get a json response from Flask - google Flask json response
 
 -Try to make a basic skeleton to start with for next week
+
+**Feedback 16 March**
+
+- Javascript in a .js file
+
+- Python should be in py folder, javascript in js etc. --> This is for static files that can be loaded into the cache
+
+- Host an Apache server to run the application
+
+- Using filters
+
+- New view for individual points
+
