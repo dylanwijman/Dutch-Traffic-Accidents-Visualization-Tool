@@ -20,7 +20,7 @@ ZoomToProvince()
 var provinceData;
 
 d3.select("#slider").on("input", function() {
-    update( String(+this.value));
+    updatePointData( String(+this.value));
 });
 
 
@@ -39,11 +39,14 @@ d3.select("#info").text( JSON.stringify(d, null, 2) );
 }
 
 // Load the data.
-function update(year) {
+function updatePointData(year) {
     d3.select("#selectedYear").text( year );
-    d3.json("/data/" + String(year), callback)
+    d3.json("/dataCoordinates/" + String(year), callback)
     //function that updates map
 };
+
+updatePointData(2015)
+console.log("hello there")
 
 
 

@@ -43,7 +43,7 @@ def data(year= 2015 ):
 #######################################
 #Global Variable
 currentProvince = "Noord-Holland"
-provinceBounds = ""
+provinceBounds = {'_northEast': {'lat': 53.184795, 'lng': 5.316834}, '_southWest': {'lat': 52.165467, 'lng': 4.493821}}
 
 @app.route("/pointMap")
 @app.route("/pointMap/<province>")
@@ -75,8 +75,16 @@ def getProvinceBounds():
     coordinates[0][1] = provinceBounds["_northEast"]['lng']
     coordinates[1][0] = provinceBounds["_southWest"]['lat']
     coordinates[1][1] = provinceBounds["_southWest"]['lng']
+    print(provinceBounds)
     return flask.jsonify( {"bounds": coordinates} )
 
+
+@app.route("/dataCoordinates")
+@app.route("/dataCoordinates/<int:year>")
+def dataCoordinates(year= 2015 ):
+    result = accidentData[ (accidentData["JAAR_VKL"] == year)]
+    output = result[result["PVE_NAAM"] == currentProvince][['X_COORD', 'Y_COORD']]
+    return output.to_json(orient="records")
 
 
 
