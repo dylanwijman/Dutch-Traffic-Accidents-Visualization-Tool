@@ -22,7 +22,7 @@ def index():
     """
     When you request the root path, you'll get the index.html template.
     """
-    return flask.render_template("index.html")
+    return flask.render_template("mapbig.html")
 
 
 @app.route("/data")
@@ -41,8 +41,8 @@ def data(year= 2015 ):
 
 if __name__ == "__main__":
     #open data
-    data = pickle.load(open( PATH_TO_DATA, "rb" ) )
-
+    #data = pickle.load(open( PATH_TO_DATA, "rb" ) )
+    #data = 5
     port = 8000
 
     # Open a web browser pointing at the app.

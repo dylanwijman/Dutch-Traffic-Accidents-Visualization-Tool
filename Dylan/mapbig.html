@@ -29,6 +29,7 @@
 
 <div id='map'></div>
 
+
 <script type="text/javascript" src="us-states.js"></script>
 
 <script type="text/javascript">
@@ -74,6 +75,8 @@
                                                                 '#FFEDA0';
     }
 
+    var data = {"Zuid-Holland":22087,"Noord-Holland":18867,"Noord-Brabant":17471,"Gelderland":15088,"Overijssel":9038,"Utrecht":8449,"Limburg":7774,"Groningen":3697,"Friesland":3623,"Drenthe":2741,"Zeeland":2469,"Flevoland":1985}
+
     function style(feature) {
         return {
             weight: 2,
@@ -81,9 +84,17 @@
             color: 'white',
             dashArray: '3',
             fillOpacity: 0.7,
-            fillColor: getColor(feature.properties.density)
+            fillColor: getColor( 100) //data.(feature.properties.OMSCHRIJVI)
         };
     }
+
+    // json
+    function provincieMapping( provincie, data){
+        return data.provincie
+
+    }
+
+
 
     function highlightFeature(e) {
         var layer = e.target;

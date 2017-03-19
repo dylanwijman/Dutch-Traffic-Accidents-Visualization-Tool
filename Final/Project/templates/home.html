@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>Dutch traffic accidents visualization tool</title>
+
+    <script src="http://d3js.org/d3.v2.js"></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+
+    <!--import css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <!--import javascript -->
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+
+</head>
+<body>
+    <h1>Dutch traffic accidents visualization tool.</h1>
+    <div id='map'></div>
+
+    <!--slider for years -->
+    <input type="range" value=2009 min=2003 max=2015 id="slider" >
+
+    <!--shows what year is selected -->
+    <div id="selectedYear"></div>
+
+    <!--shows data for the time being-->
+    <div id="info"></div>
+
+    <!--shows a plot, we migth not use this div at all. -->
+    <div id="plot"></div>
+
+    <!--import javascript -->
+    <script type="text/javascript" src="{{ url_for('static', filename='leaflet/netherlands.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='showmap.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='data_handler.js') }}"></script>
+
+
+
+</body>
+</html>
