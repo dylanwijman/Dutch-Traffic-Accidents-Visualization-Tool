@@ -1,68 +1,39 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-    <title>Quick Start - Leaflet</title>
+    <title>Dutch traffic accidents visualization tool</title>
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://d3js.org/d3.v2.js"></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
 
-    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
-
+    <!--import css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <!--import javascript -->
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-
-
 
 </head>
 <body>
+    <h1>Dutch traffic accidents visualization tool (for points).</h1>
+    <div id='pointMap'></div>
 
+    <!--slider for years -->
+    <input type="range" value=2009 min=2003 max=2015 id="slider" >
 
+    <!--shows what year is selected -->
+    <div id="selectedYear"></div>
 
-<div id="mapid" style="width: 600px; height: 400px;"></div>
-<script>
+    <!--shows data for the time being-->
+    <div id="info"></div>
 
-    var mymap = L.map('mapid').setView([52.3702, 4.8952], 13);
+    <!--shows a plot, we migth not use this div at all. -->
+    <div id="plot"></div>
 
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-        maxZoom: 18,
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-        'Imagery © <a href="http://mapbox.com"> Mapbox</a>',
-        id: 'mapbox.streets'
-    }).addTo(mymap);
-
-    L.marker([52.3702, 4.8952]).addTo(mymap)
-            .bindPopup("<b>Where am I?</b><br />Help me!").openPopup();
-
-    function createPoint(locationX, locationY){
-    L.circle([locationX, locationY], 500, {
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5
-    }).addTo(mymap).bindPopup("I am a circle.");
-    }
-
-    function randomInRange(min, max) {
-        console.log("point created");
-        return Math.random() * (max-min) + min;
-    }
-
-    for(var i = 0; i < 10; i++){
-        createPoint(randomInRange(52, 53), randomInRange(4,5))
-    }
-
-    L.polygon([
-        [51.509, -0.08],
-        [51.503, -0.06],
-        [51.51, -0.047]
-    ]).addTo(mymap).bindPopup("I am a polygon.");
-
-    var popup = L.popup();
-
-</script>
-
-
+    <!--import javascript -->
+    <script type="text/javascript" src="{{ url_for('static', filename='createPointMap.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='data_handler_points.js') }}"></script>
 
 </body>
 </html>

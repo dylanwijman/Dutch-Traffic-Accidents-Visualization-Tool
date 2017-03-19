@@ -76,10 +76,27 @@ var geojson;
 function resetHighlight(e) {
     geojson.resetStyle(e.target);
     info.update(e.target.feature.properties, provinceData);
+    console.log(e.target.getBounds())
+
 }
 
 function zoomToFeature(e) {
-    map.fitBounds(e.target.getBounds());
+
+//here we post the json to postProvinceBounds
+    $.ajax({
+    url: 'http://127.0.0.1:8000/postProvinceBounds',//'postProvinceBounds',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify( e.target.getBounds() ),
+    dataType: 'json',
+    success: function (e) {
+        console.log(e);
+    }
+    });
+
+    //route to new page that knows the province
+    var location = "/pointMap/" + e.target.feature.properties.OMSCHRIJVI
+    window.location.replace( location )
 }
 
 function onEachFeature(feature, layer) {
@@ -116,10 +133,7 @@ legend.onAdd = function (map) {
 };
 
 function update_map(){
-//    geojson = L.geoJson(statesData, {
-//        style: style,
-//        onEachFeature: onEachFeature
-//    });
+
     if (geojson != null){
         map.removeLayer(geojson);
         }

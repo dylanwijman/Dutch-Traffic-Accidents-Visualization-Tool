@@ -1,3 +1,22 @@
+
+
+var zoom = function (bounds) {
+    console.log(JSON.stringify( bounds))
+    map.fitBounds(  bounds.bounds )
+}
+
+function ZoomToProvince(){
+
+    d3.json("/getProvinceBounds", zoom)
+}
+
+ZoomToProvince()
+
+
+// ------------
+// old functions underneath
+// ------------
+
 var provinceData;
 
 d3.select("#slider").on("input", function() {
@@ -14,8 +33,9 @@ var callback = function (d) {
 d3.select("#info").text( JSON.stringify(d, null, 2) );
     //here we define the data variable
     provinceData = d
+
     //underneath we update the map using a function from show_map
-    update_map()
+    //update_map()
 }
 
 // Load the data.
@@ -24,5 +44,6 @@ function update(year) {
     d3.json("/data/" + String(year), callback)
     //function that updates map
 };
-update(2009);
+
+
 

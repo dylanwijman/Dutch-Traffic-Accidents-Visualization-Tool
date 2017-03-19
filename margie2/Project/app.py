@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 import pickle
 
-PATH_TO_DATA = "verkeersOngelukkenNederlandProtocol2.p"
+PATH_TO_DATA = "../../Data/verkeersOngelukkenNederland.p"
 app = flask.Flask(__name__)
 
 

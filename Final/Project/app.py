@@ -15,13 +15,15 @@ PATH_TO_DATA = "../../Data/verkeersOngelukkenNederland.p"
 app = flask.Flask(__name__)
 
 
+#######################################
+# this is for the main map
+#######################################
 @app.route("/")
 def index():
     """
     When you request the root path, you'll get the index.html template.
     """
     return flask.render_template("home.html")
-
 
 @app.route("/data")
 @app.route("/data/<int:year>")
@@ -35,6 +37,46 @@ def data(year= 2015 ):
         outputDict[key] = {"accidents": value, "per_capita": round((int(value) / populationData[key] ), 5)}
 
     return json.dumps(outputDict)
+
+#######################################
+# this is for the pointMap
+#######################################
+#Global Variable
+currentProvince = "Noord-Holland"
+provinceBounds = ""
+
+@app.route("/pointMap")
+@app.route("/pointMap/<province>")
+def pointMap(province="Noord-Holland"):
+    #set global province to the
+    global currentProvince
+
+    currentProvince = province
+    """
+    When you request the root path, you'll get the index.html template.
+    """
+    return flask.render_template("pointMap.html")
+
+
+@app.route("/province")
+def province( ):
+    return currentProvince
+
+@app.route("/postProvinceBounds", methods=['POST'] )
+def postProvinceBounds():
+    global provinceBounds
+    provinceBounds = flask.request.get_json()
+    return "" #flask.jsonify({"david": 23})
+
+@app.route("/getProvinceBounds" )
+def getProvinceBounds():
+    coordinates = [[0,0],[0,0]]
+    coordinates[0][0] = provinceBounds["_northEast"]['lat']
+    coordinates[0][1] = provinceBounds["_northEast"]['lng']
+    coordinates[1][0] = provinceBounds["_southWest"]['lat']
+    coordinates[1][1] = provinceBounds["_southWest"]['lng']
+    return flask.jsonify( {"bounds": coordinates} )
+
 
 
 
